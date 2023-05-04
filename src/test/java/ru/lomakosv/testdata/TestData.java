@@ -19,7 +19,7 @@ public class TestData {
     public final static String jsonStringEditingRequest = String.format("{\"steps\":[{\"name\":\"%s\",\"attachments\":[],\"steps\":[]," +
             "\"leaf\":true,\"stepsCount\":0,\"hasContent\":false,\"spacing\":\"\"}," + "{\"name\":\"%s\",\"attachments\":[]," +
             "\"steps\":[],\"leaf\":true,\"stepsCount\":0," +
-            "\"hasContent\":false,\"spacing\":\"\"}],\"workPath\":[1]}",nameStepTestCaseTwo, nameStepTestCaseOne);
+            "\"hasContent\":false,\"spacing\":\"\"}],\"workPath\":[1]}", nameStepTestCaseTwo, nameStepTestCaseOne);
 
 
 }

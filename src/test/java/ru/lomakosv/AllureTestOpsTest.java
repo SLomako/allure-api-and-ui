@@ -25,12 +25,10 @@ public class AllureTestOpsTest extends TestBase {
 
     public static String testCaseID;
 
-
     @Owner("Slomako")
     @DisplayName("Создрание тест кейса, добавление и редактирование шагов, добавление комментария и удаление созданного тест кейса")
     @Test
     void testCreateAndDeleteTestCase() {
-
 
         CreateTestCaseResponse testCaseResponse = step("Создаем тест кейс", () -> given(requestSpec)
                 .body(testCaseBody)
@@ -127,9 +125,5 @@ public class AllureTestOpsTest extends TestBase {
             });
             Attach.screenshotAs("Screenshot step");
         });
-
-
     }
-
-
 }
