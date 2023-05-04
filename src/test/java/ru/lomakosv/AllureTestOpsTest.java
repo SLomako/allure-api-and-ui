@@ -20,7 +20,7 @@ import static ru.lomakosv.testdata.TestData.*;
 public class AllureTestOpsTest extends TestBase {
 
     @Owner("Slomako")
-    @DisplayName("Добавление шагов")
+    @DisplayName("Добавление шагов и редактирование")
     @Test
     void testAddingSteps() {
 
@@ -38,12 +38,6 @@ public class AllureTestOpsTest extends TestBase {
             openBaseUrlBrowser();
             Attach.screenshotAs("Screenshot step");
         });
-    }
-
-    @Owner("Slomako")
-    @DisplayName("Редактирование шагов")
-    @Test
-    void testEditingSteps() {
 
         step("Меняем местами название шагов", () -> {
             given(requestSpec)

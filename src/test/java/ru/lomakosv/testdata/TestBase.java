@@ -58,7 +58,7 @@ public class TestBase {
     }
 
     @Owner("Slomako")
-    @DisplayName("Создание тест кейса, добавление и редактирование шагов, добавление комментария и удаление созданного тест кейса")
+    @DisplayName("Создание тест кейса")
     @BeforeEach
     void testCreateTestCase() {
 
