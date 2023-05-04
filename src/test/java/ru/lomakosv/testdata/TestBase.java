@@ -3,6 +3,7 @@ package ru.lomakosv.testdata;
 import com.codeborne.selenide.Configuration;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
+import ru.lomakosv.config.Project;
 import ru.lomakosv.models.CreateTestCaseBody;
 
 import static io.qameta.allure.Allure.step;
@@ -17,9 +18,10 @@ public class TestBase {
 
     @BeforeAll
     static void setIUp() {
-//        Configuration.browserVersion = "100.0";
-//        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browser = Project.config.browser();
+        Configuration.browserVersion = Project.config.browserVersion();
+        Configuration.browserSize = Project.config.browserSize();
+        Configuration.remote = Project.config.remoteDriverUrl();
         Configuration.baseUrl = "https://allure.autotests.cloud";
         RestAssured.baseURI = "https://allure.autotests.cloud";
 

@@ -2,8 +2,6 @@ package ru.lomakosv;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import ru.lomakosv.config.utils.Blocker;
 import ru.lomakosv.helpers.Attach;
 import ru.lomakosv.models.CreateTestCaseResponse;
 import org.junit.jupiter.api.Test;
@@ -20,12 +18,13 @@ import static ru.lomakosv.Specification.responseSpec;
 import static ru.lomakosv.config.ConfigBrowser.openBaseUrlBrowser;
 import static ru.lomakosv.testdata.TestData.*;
 
+
 @DisplayName("Тест на AllureTestOpsTest")
 public class AllureTestOpsTest extends TestBase {
 
     public static String testCaseID;
 
-    @Blocker
+
     @Owner("Slomako")
     @DisplayName("Создрание тест кейса, добавление и редактирование шагов, добавление комментария и удаление созданного тест кейса")
     @Test

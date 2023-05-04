@@ -1,13 +1,6 @@
 package ru.lomakosv.testdata;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.A;
-import ru.lomakosv.AllureTestOpsTest;
-import ru.lomakosv.models.CreateTestCaseBody;
-import ru.lomakosv.models.CreateTestCaseResponse;
-import ru.lomakosv.testdata.TestBase;
-import static ru.lomakosv.AllureTestOpsTest.testCaseID;
-
 
 public class TestData {
 
