@@ -12,7 +12,6 @@ public class Attach {
 
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
-
 }
 
 
