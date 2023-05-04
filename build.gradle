@@ -42,7 +42,6 @@ dependencies {
             "io.qameta.allure:allure-selenide:2.21.0",
             "org.assertj:assertj-core:3.23.1",
             "com.fasterxml.jackson.core:jackson-core:2.15.0"
-
     )
 }
 
@@ -51,6 +50,19 @@ test {
     systemProperties(System.getProperties())
 
     testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task remote_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("remote")
+    }
+    testLogging {
+
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"

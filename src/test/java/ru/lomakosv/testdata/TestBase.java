@@ -17,6 +17,7 @@ public class TestBase {
 
     @BeforeAll
     static void setIUp() {
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.baseUrl = "https://allure.autotests.cloud";
         RestAssured.baseURI = "https://allure.autotests.cloud";
 
