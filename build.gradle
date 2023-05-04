@@ -56,16 +56,3 @@ test {
         }
     }
 }
-
-task remote_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("remote")
-    }
-    testLogging {
-
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
-}

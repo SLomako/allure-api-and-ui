@@ -25,7 +25,6 @@ public class AllureTestOpsTest extends TestBase {
 
     public static String testCaseID;
 
-    @Tag("remote")
     @Blocker
     @Owner("Slomako")
     @DisplayName("Создрание тест кейса, добавление и редактирование шагов, добавление комментария и удаление созданного тест кейса")
