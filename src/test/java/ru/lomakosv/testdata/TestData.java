@@ -5,18 +5,12 @@ import com.github.javafaker.Faker;
 public class TestData {
 
     static Faker faker = new Faker();
+
     public final static String
             testCaseName = faker.rockBand().name(),
             nameStepTestCaseOne = faker.funnyName().name(),
             nameStepTestCaseTwo = faker.artist().name(),
             commentProject = "всё отлично";
-
-    public final static String
-            USERNAME = "allure8",
-            PASSWORD = "allure8",
-            TOKEN = "378eab16-c82b-4fb1-9784-089a0c16be6a",
-            xsrfToken = "12345",
-            projectId = "2208";
 
     public final static String
             jsonStringCreateTestCaseRequest = String.format("{\"steps\":[{\"name\":\"%s\",\"spacing\":\"\"}, " +

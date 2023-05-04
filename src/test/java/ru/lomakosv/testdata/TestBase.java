@@ -3,21 +3,28 @@ package ru.lomakosv.testdata;
 import com.codeborne.selenide.Configuration;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
+import ru.lomakosv.config.AuthConfig;
 import ru.lomakosv.config.Project;
 import ru.lomakosv.models.CreateTestCaseBody;
 
+import java.io.IOException;
+
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
+import static ru.lomakosv.config.AuthConfig.*;
 
 
 public class TestBase {
 
     public static String allureTestOpsSession;
-    public static CreateTestCaseBody testCaseBody = new CreateTestCaseBody();
-
+    protected static CreateTestCaseBody testCaseBody = new CreateTestCaseBody();
+    static AuthConfig authConfig = new AuthConfig();
 
     @BeforeAll
-    static void setIUp() {
+    static void setIUp() throws IOException {
+
+        authConfig.getAuthConfig();
+
         Configuration.browser = Project.config.browser();
         Configuration.browserVersion = Project.config.browserVersion();
         Configuration.browserSize = Project.config.browserSize();
@@ -27,10 +34,10 @@ public class TestBase {
 
         step("Авторизация", () -> {
         allureTestOpsSession = given()
-                .header("X-XSRF-TOKEN", TestData.xsrfToken)
-                .header("Cookie", "XSRF-TOKEN=" + TestData.xsrfToken)
-                .formParam("username", TestData.USERNAME)
-                .formParam("password", TestData.PASSWORD)
+                .header("X-XSRF-TOKEN", xsrfToken)
+                .header("Cookie", "XSRF-TOKEN=" + xsrfToken)
+                .formParam("username", username)
+                .formParam("password", password)
                 .when()
                 .post("/api/login/system")
                 .then()

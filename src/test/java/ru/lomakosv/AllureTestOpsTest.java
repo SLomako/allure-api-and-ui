@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static io.restassured.RestAssured.given;
 import static ru.lomakosv.Specification.requestSpec;
 import static ru.lomakosv.Specification.responseSpec;
+import static ru.lomakosv.config.AuthConfig.projectId;
 import static ru.lomakosv.config.ConfigBrowser.openBaseUrlBrowser;
 import static ru.lomakosv.testdata.TestData.*;
 
@@ -33,7 +34,7 @@ public class AllureTestOpsTest extends TestBase {
 
         CreateTestCaseResponse testCaseResponse = step("Создаем тест кейс", () -> given(requestSpec)
                 .body(testCaseBody)
-                .queryParam("projectId", TestData.projectId)
+                .queryParam("projectId", projectId)
                 .when()
                 .post("/testcasetree/leaf")
                 .then()
@@ -105,7 +106,7 @@ public class AllureTestOpsTest extends TestBase {
 
         String jsonStringDeleteTestCaseRequest = String.format("{\"selection\":{\"inverted\":false,\"groupsInclude\":[]," +
                 "\"groupsExclude\":[],\"leafsInclude\":[%s],\"leafsExclude\":[],\"kind\":\"TreeSelectionDto\"," +
-                "\"projectId\":%s,\"path\":[]}}", testCaseID, TestData.projectId); //todo убрать в TestBase
+                "\"projectId\":%s,\"path\":[]}}", testCaseID, projectId); //todo убрать в TestBase
 
         step("Удаление созданного тейст кейса", () -> {
             given(requestSpec)
