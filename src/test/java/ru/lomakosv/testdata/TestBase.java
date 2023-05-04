@@ -17,6 +17,8 @@ public class TestBase {
 
     @BeforeAll
     static void setIUp() {
+        Configuration.browserVersion = "100.0";
+        Configuration.browserSize = "1920x1080";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.baseUrl = "https://allure.autotests.cloud";
         RestAssured.baseURI = "https://allure.autotests.cloud";
