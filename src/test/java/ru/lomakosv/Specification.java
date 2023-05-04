@@ -10,7 +10,7 @@ import static io.restassured.filter.log.LogDetail.STATUS;
 import static io.restassured.http.ContentType.JSON;
 import static ru.lomakosv.config.AuthConfig.token;
 import static ru.lomakosv.helpers.CustomApiListener.withCustomTemplates;
-import static ru.lomakosv.testdata.TestBase.allureTestOpsSession;
+import static ru.lomakosv.TestBase.allureTestOpsSession;
 
 public class Specification {
 
