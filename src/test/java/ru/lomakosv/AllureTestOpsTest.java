@@ -120,7 +120,7 @@ public class AllureTestOpsTest extends TestBase {
             openBaseUrlBrowser();
             String messageDelete = $("[class='Alert Alert_status_failed Alert_center']").innerText();
 
-            step("Сообщение Тест кейс удален", () -> {
+            step("Сообщение - тест кейс удален", () -> {
                 assertThat(messageDelete).isEqualTo("Test case was deleted");
             });
             Attach.screenshotAs("Screenshot step");
