@@ -25,7 +25,7 @@ import static ru.lomakosv.testdata.TestData.*;
 public class AllureTestOpsTest extends TestBase {
 
     @Owner("Slomako")
-    @DisplayName("Создание тест кейса")
+    @DisplayName("Создание нового тест кейса")
     @BeforeEach
     void testCreateTestCase() {
 
@@ -85,7 +85,7 @@ public class AllureTestOpsTest extends TestBase {
     }
 
     @Owner("Slomako")
-    @DisplayName("Добавление шагов и их редактирование")
+    @DisplayName("Добавление шагов и редактирование")
     @Test
     void testAddingSteps() {
 
@@ -122,7 +122,7 @@ public class AllureTestOpsTest extends TestBase {
 
 
     @Owner("Slomako")
-    @DisplayName("Добавление комментария")
+    @DisplayName("Добавление комментария к тест кейсу")
     @Test
     void testAddComment() {
 
