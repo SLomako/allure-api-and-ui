@@ -21,15 +21,15 @@ import static ru.lomakosv.config.ConfigBrowser.openBaseUrlBrowser;
 import static ru.lomakosv.testdata.TestData.*;
 
 
-@DisplayName("Тест на AllureTestOpsTest")
+@DisplayName("Тесты на AllureTestOpsTest")
 public class AllureTestOpsTest extends TestBase {
 
     @Owner("Slomako")
     @DisplayName("Создание нового тест кейса")
     @BeforeEach
-    void testCreateTestCase() {
+    void testCreateNewTestCase() {
 
-        CreateTestCaseResponse testCaseResponse = step("Создаем тест кейс", () -> given(requestSpec)
+        CreateTestCaseResponse testCaseResponse = step("Отправляем запрос на создание тест кейса", () -> given(requestSpec)
                 .body(testCaseBody)
                 .queryParam("projectId", projectId)
                 .when()
@@ -38,15 +38,15 @@ public class AllureTestOpsTest extends TestBase {
                 .spec(responseSpec)
                 .statusCode(200).extract().as(CreateTestCaseResponse.class));
 
-        step("Проверка имени тест кейса", () -> {
+        step("Проверяем, что имя созданного тест кейса соответствует заданному", () -> {
             assertThat(testCaseResponse.getName()).isEqualTo(TestData.testCaseName);
         });
 
-        step("Проверка, что тест не автоматизирован", () -> {
+        step("Проверяем, что созданный тест кейс не автоматизирован", () -> {
             assertThat(testCaseResponse.getAutomated()).isEqualTo(false);
         });
 
-        step("Проверка статуса", () -> {
+        step("Проверяем, что статус созданного тест кейса равен 'Draft'", () -> {
             assertThat(testCaseResponse.getStatusName()).isEqualTo("Draft");
         });
 
@@ -57,7 +57,7 @@ public class AllureTestOpsTest extends TestBase {
     @AfterEach
     @Owner("Slomako")
     @DisplayName("Удаление созданного тест кейса")
-    void testDeleteTEstCase() {
+    void testDeleteTestCase() {
 
         String jsonStringDeleteTestCaseRequest = String.format("{\"selection\":{\"inverted\":false,\"groupsInclude\":[]," +
                 "\"groupsExclude\":[],\"leafsInclude\":[%s],\"leafsExclude\":[],\"kind\":\"TreeSelectionDto\"," +
@@ -73,11 +73,11 @@ public class AllureTestOpsTest extends TestBase {
                     .statusCode(204);
         });
 
-        step("Открываем браузер и проверяем, что тест кейc удален", () -> {
+        step("Проверка отсутствия тест кейса в списке", () -> {
             openBaseUrlBrowser();
             String messageDelete = $("[class='Alert Alert_status_failed Alert_center']").innerText();
 
-            step("Сообщение - тест кейс удален", () -> {
+            step("Проверка сообщения об успешном удалении тест кейса", () -> {
                 assertThat(messageDelete).isEqualTo("Test case was deleted");
             });
             Attach.screenshotAs("Screenshot step");
@@ -87,9 +87,9 @@ public class AllureTestOpsTest extends TestBase {
     @Owner("Slomako")
     @DisplayName("Добавление шагов и редактирование")
     @Test
-    void testAddingSteps() {
+    void testAddEditSteps() {
 
-        step("Добавляем шаги в созданный тест кейс", () -> {
+        step("Добавление шагов в тест-кейс", () -> {
             given(requestSpec)
                     .body(jsonStringCreateTestCaseRequest)
                     .when()
@@ -99,12 +99,12 @@ public class AllureTestOpsTest extends TestBase {
                     .statusCode(200);
         });
 
-        step("Открываем браузер и делаем скриншот результата добавление шагов в тест кейс", () -> {
+        step("Открытие страницы тест-кейса в браузере и создание скриншота", () -> {
             openBaseUrlBrowser();
             Attach.screenshotAs("Screenshot step");
         });
 
-        step("Меняем местами название шагов", () -> {
+        step("Изменение порядка шагов в тест-кейсе", () -> {
             given(requestSpec)
                     .body(jsonStringEditingRequest)
                     .when()
@@ -114,7 +114,7 @@ public class AllureTestOpsTest extends TestBase {
                     .statusCode(200);
         });
 
-        step("Открываем браузер и проверяем, что шаги поменялись местами", () -> {
+        step("Открытие страницы тест-кейса в браузере и создание скриншота", () -> {
             openBaseUrlBrowser();
             Attach.screenshotAs("Screenshot step");
         });
@@ -124,7 +124,7 @@ public class AllureTestOpsTest extends TestBase {
     @Owner("Slomako")
     @DisplayName("Добавление комментария к тест кейсу")
     @Test
-    void testAddComment() {
+    void testAddCommentToTestCase() {
 
         String jsonStringCommentRequest = String.format("{\"testCaseId\":%s,\"body\":\"%s\"}",
                 testCaseID, TestData.commentProject); //todo убрать в TestBse
@@ -139,7 +139,7 @@ public class AllureTestOpsTest extends TestBase {
                     .statusCode(200);
         });
 
-        step("Открываем браузер и проверяем, что комментарий добавлен", () -> {
+        step("Открытие страницы тест-кейса в браузере и создание скриншота", () -> {
             openBaseUrlBrowser();
             Attach.screenshotAs("Screenshot step");
         });
