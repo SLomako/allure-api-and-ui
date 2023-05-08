@@ -26,10 +26,10 @@ public class TestBase {
 
         authConfig.getAuthConfig();
 
-        Configuration.browser = Project.config.browser();
-        Configuration.browserVersion = Project.config.browserVersion();
-        Configuration.browserSize = Project.config.browserSize();
-        Configuration.remote = Project.config.remoteDriverUrl();
+        Configuration.browser = Project.config.getBrowser();
+        Configuration.browserVersion = Project.config.getBrowserVersion();
+        Configuration.browserSize = Project.config.getBrowserSize();
+        Configuration.remote = Project.config.getRemoteDriverUrl();
         Configuration.baseUrl = "https://allure.autotests.cloud";
         RestAssured.baseURI = "https://allure.autotests.cloud";
 
