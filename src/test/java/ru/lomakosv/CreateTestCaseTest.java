@@ -5,6 +5,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.lomakosv.config.AuthConfig;
+import ru.lomakosv.models.CreateTestCaseBody;
 import ru.lomakosv.models.CreateTestCaseResponse;
 import ru.lomakosv.testdata.TestData;
 
@@ -13,18 +14,17 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.lomakosv.Specification.requestSpec;
 import static ru.lomakosv.Specification.responseSpec;
-import static ru.lomakosv.TestBase.testCaseBody;
 
 @Owner("SLomako")
-public class CreateTestCaseTest {
+public class CreateTestCaseTest extends TestBase{
 
     AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
-    String allureTestOpsSession = Authentication.authenticate();
-
+    protected static CreateTestCaseBody testCaseBody = new CreateTestCaseBody();
 
     @Test
     @DisplayName("Создание нового тест кейса")
     void testCreateNewTestCase() {
+        testCaseBody.setName(TestData.testCaseName);
 
         CreateTestCaseResponse testCaseResponse = step("Отправляем запрос на создание тест кейса", () -> given(requestSpec)
                 .body(testCaseBody)
@@ -43,9 +43,6 @@ public class CreateTestCaseTest {
 
         step("Проверяем, что статус созданного тест кейса равен 'Draft'", () ->
                 assertThat(testCaseResponse.getStatusName()).isEqualTo("Draft"));
-
-        String testCaseID = testCaseResponse.getId();
-        testCaseBody.setName(TestData.testCaseName);
 
     }
 }

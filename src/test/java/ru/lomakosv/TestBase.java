@@ -5,13 +5,11 @@ import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import ru.lomakosv.config.WebConfig;
-import ru.lomakosv.models.CreateTestCaseBody;
 
 
 public class TestBase {
 
     public static String testCaseID;
-    protected static CreateTestCaseBody testCaseBody = new CreateTestCaseBody();
     protected static WebConfig webConfig = ConfigFactory.create(WebConfig.class);
 
     @BeforeAll
