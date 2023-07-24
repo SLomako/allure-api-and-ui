@@ -13,15 +13,16 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.lomakosv.Specification.requestSpec;
 import static ru.lomakosv.Specification.responseSpec;
-import static ru.lomakosv.TestBase.testCaseID;
 
 @Owner("Slomako")
-public class DeleteTestCaseTest  {
+public class DeleteTestCaseTest extends TestBase {
 
     AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
 
     @DisplayName("Удаление созданного тест кейса")
     void testDeleteTestCase() {
+
+        String testCaseID = CreateTestCaseTest.testCaseID;
 
         String jsonStringDeleteTestCaseRequest = String.format("{\"selection\":{\"inverted\":false,\"groupsInclude\":[]," +
                 "\"groupsExclude\":[],\"leafsInclude\":[%s],\"leafsExclude\":[],\"kind\":\"TreeSelectionDto\"," +

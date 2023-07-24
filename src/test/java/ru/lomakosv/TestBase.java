@@ -9,7 +9,6 @@ import ru.lomakosv.config.WebConfig;
 
 public class TestBase {
 
-    public static String testCaseID;
     protected static WebConfig webConfig = ConfigFactory.create(WebConfig.class);
 
     @BeforeAll

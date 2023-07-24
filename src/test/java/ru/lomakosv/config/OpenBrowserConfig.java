@@ -7,12 +7,11 @@ import ru.lomakosv.Authentication;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static ru.lomakosv.TestBase.testCaseID;
+import static ru.lomakosv.CreateTestCaseTest.testCaseID;
 
 public class OpenBrowserConfig {
 
     private static final AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
-
 
     public static void openBaseUrlBrowser() {
         String allureTestOpsSession = Authentication.authenticate();

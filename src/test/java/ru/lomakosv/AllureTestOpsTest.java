@@ -32,7 +32,7 @@ public class AllureTestOpsTest extends TestBase {
                 given(requestSpec)
                         .body(jsonStringCreateTestCaseRequest)
                         .when()
-                        .post(format("/testcase/%s/scenario", testCaseID))
+                        .post(format("/testcase/%s/scenario", CreateTestCaseTest.testCaseID))
                         .then()
                         .spec(responseSpec)
                         .statusCode(200)
@@ -47,7 +47,7 @@ public class AllureTestOpsTest extends TestBase {
                 given(requestSpec)
                         .body(jsonStringEditingRequest)
                         .when()
-                        .post(format("/testcase/%s/scenario", testCaseID))
+                        .post(format("/testcase/%s/scenario", CreateTestCaseTest.testCaseID))
                         .then()
                         .spec(responseSpec)
                         .statusCode(200));
@@ -64,7 +64,7 @@ public class AllureTestOpsTest extends TestBase {
     void testAddCommentToTestCase() {
 
         String jsonStringCommentRequest = String.format("{\"testCaseId\":%s,\"body\":\"%s\"}",
-                testCaseID, TestData.commentProject); //todo убрать pojo
+                CreateTestCaseTest.testCaseID, TestData.commentProject); //todo убрать pojo
 
         step("Добавляем комментарий к тест кейсу", () ->
                 given(requestSpec)

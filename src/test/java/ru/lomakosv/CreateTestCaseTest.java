@@ -18,8 +18,9 @@ import static ru.lomakosv.Specification.responseSpec;
 @Owner("SLomako")
 public class CreateTestCaseTest extends TestBase{
 
-    AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
+    static AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
     protected static CreateTestCaseBody testCaseBody = new CreateTestCaseBody();
+    public static String testCaseID;
 
     @Test
     @DisplayName("Создание нового тест кейса")
@@ -44,5 +45,6 @@ public class CreateTestCaseTest extends TestBase{
         step("Проверяем, что статус созданного тест кейса равен 'Draft'", () ->
                 assertThat(testCaseResponse.getStatusName()).isEqualTo("Draft"));
 
+       testCaseID = testCaseResponse.getId();
     }
 }
