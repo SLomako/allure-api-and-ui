@@ -1,20 +1,21 @@
 package ru.lomakosv.config;
 
-import java.io.IOException;
+import org.aeonbits.owner.Config;
 
-public class AuthConfig {
+@Config.Sources({
+        "classpath:config/test.properties"
+})
+public interface AuthConfig extends Config {
 
-    public static String username, password, token, xsrfToken, projectId;
+    String username();
 
-    public void getAuthConfig() throws IOException {
+    String password();
 
-        System.getProperties().load(ClassLoader.getSystemResourceAsStream("config/remote.properties"));
+    @Key("token")
+    String token();
 
-        username = System.getProperty("username");
-        password = System.getProperty("password");
-        token = System.getProperty("token");
-        xsrfToken = System.getProperty("xsrfToken");
-        projectId = System.getProperty("projectId");
+    @Key("xsrfToken")
+    String xsrfToken();
 
-    }
+    String projectId();
 }
