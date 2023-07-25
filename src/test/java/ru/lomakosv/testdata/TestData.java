@@ -20,6 +20,4 @@ public class TestData {
             "\"leaf\":true,\"stepsCount\":0,\"hasContent\":false,\"spacing\":\"\"}," + "{\"name\":\"%s\",\"attachments\":[]," +
             "\"steps\":[],\"leaf\":true,\"stepsCount\":0," +
             "\"hasContent\":false,\"spacing\":\"\"}],\"workPath\":[1]}", nameStepTestCaseTwo, nameStepTestCaseOne);
-
-
 }

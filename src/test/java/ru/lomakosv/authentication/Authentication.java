@@ -1,4 +1,4 @@
-package ru.lomakosv;
+package ru.lomakosv.authentication;
 
 import org.aeonbits.owner.ConfigFactory;
 import ru.lomakosv.config.AuthConfig;
@@ -7,10 +7,21 @@ import static io.restassured.RestAssured.given;
 
 public class Authentication {
 
-    public static String allureTestOpsSession;
-    static AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
+    private static Authentication instance;
+    private static String allureTestOpsSession;
+    private static final AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
 
-    public static String authenticate() {
+    private Authentication() {
+    }
+
+    public static Authentication getInstance() {
+        if (instance == null) {
+            instance = new Authentication();
+        }
+        return instance;
+    }
+
+    public String authenticate() {
 
         return allureTestOpsSession = given()
                 .header("X-XSRF-TOKEN", authConfig.xsrfToken())
